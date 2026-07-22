@@ -43,3 +43,8 @@ Roadmap
 
 ## Current Status
 **Phase 1 Complete:** The Control Plane (Windows 11) is fully integrated with the Target Infrastructure (Linux Mint) via SSH. Remote development via VS Code is operational. Currently transitioning to Phase 2 (Containerization).
+
+### Connectivity & Management
+*   **Primary:** OpenSSH (Headless terminal access) — **Validated**
+*   **IDE:** VS Code (via Remote-SSH extension) — **Validated**
+*   **Recovery:** Parsec (for GUI-level diagnostic access)
