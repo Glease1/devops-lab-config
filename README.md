@@ -5,7 +5,7 @@ Workflow Philosophy
 The goal of this lab is to achieve environment parity. The Windows host acts as the primary IDE and development environment, while the Linux node serves as an isolated test-bed. This ensures that code developed locally is verified against a production-like Linux environment before being considered deployment-ready.
 
 Architecture: Native Execution Approach
-To ensure system stability and optimize resource usage on the target node, this lab follows a Native Execution pattern. Applications are deployed directly to the Linux environment using automated synchronization rather than containerization. This approach allows for realistic performance testing and deeper familiarity with Linux service management (systemd) and native environment configuration.
+To ensure system stability and optimize resource usage on the target node, this lab follows a Native Execution pattern. Applications are deployed directly to the Linux environment using automated synchronization rather than containerization. This approach allows for realistic performance testing and deeper familiarity with Linux service management and native environment configuration.
 
 The Stack
 Control Plane (Host): Windows 11 Professional. Role: Primary development workstation, CLI management, and orchestration hub.
@@ -31,7 +31,7 @@ Cross-Platform Workflow: Bridging Windows 11 and Linux ecosystems to create a se
 Roadmap
 [x] Phase 1: Foundation - Stabilize SSH connectivity, SSH key authentication, and remote VS Code integration.
 
-[x] Phase 2: Native Deployment - Configure the Linux node for C# execution and implement systemd service management.
+[x] Phase 2: Native Deployment - Configure the Linux node for C# execution and implement global CLI installation.
 
 [ ] Phase 3: Automation - Implement Ansible playbooks for automated server provisioning.
 
@@ -42,7 +42,7 @@ Roadmap
 Deployment Strategy
 Code is maintained in a central GitHub repository. The Linux node uses SSH-based authentication to pull the latest code directly.
 
-Authentication: Managed via Ed25519 SSH keys. (Currently transitioning from password-based to passwordless authentication).
+Authentication: Managed via standard SSH. Password-based access is maintained as a security policy.
 
 Workflow: Code is developed on the Windows host, pushed to GitHub, and pulled natively onto the Linux node for testing.
 
