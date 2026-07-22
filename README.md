@@ -49,3 +49,9 @@ Code is maintained in a central GitHub repository. The Linux Node uses SSH-based
 Authentication: Managed via Ed25519 SSH keys for passwordless synchronization.
 
 Workflow: Code is developed on the Windows Host, pushed to GitHub, and pulled natively onto the Linux Node for testing.
+
+Node Configuration: .NET Runtime
+Status: Installed
+Version: .NET SDK 8.0
+Method: Official Microsoft APT Repository
+Purpose: Enables native execution of C# utility projects, allowing for performance benchmarking and testing directly on the Linux target without container overhead.
