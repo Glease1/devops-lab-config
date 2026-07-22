@@ -1,7 +1,7 @@
 Ryan's DevOps Infrastructure Lab
 This repository documents the evolution of my professional DevOps homelab. The goal is to build a scalable, remote-managed development environment that mirrors real-world IT service desk and engineering workflows.
 
-🏗️ Core Architecture
+Core Architecture
 I operate a Cross-Platform Control-Plane architecture. This setup separates my "Control Plane" (where I do the work) from my "Target Infrastructure" (where the services run).
 
 The Stack
@@ -21,7 +21,7 @@ IDE: VS Code (via Remote-SSH extension).
 
 Recovery: Parsec (for GUI-level diagnostic access).
 
-🚀 Key Objectives
+Key Objectives
 My focus is on shifting from manual configuration to Infrastructure as Code (IaC). This lab is built to practice:
 
 Remote Administration: Managing Linux environments without physical keyboard/monitor interaction.
@@ -30,7 +30,7 @@ Configuration Management: Moving from ad-hoc setup to repeatable, automated prov
 
 Cross-Platform Workflow: Bridging Windows 11 and Linux ecosystems to create a seamless developer experience.
 
-🗺️ Roadmap
+Roadmap
 [ ] Phase 1: Foundation - Stabilize SSH connectivity, SSH key auth, and remote VS Code integration.
 
 [ ] Phase 2: Containerization - Migrate existing C# utility projects (Calculator, BMI) into Docker containers.
