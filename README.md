@@ -1,8 +1,8 @@
 Ryan's DevOps Infrastructure Lab
 This repository documents the evolution of my professional DevOps homelab. The goal is to build a scalable, remote-managed development environment that mirrors real-world IT service desk and engineering workflows.
 
-Core Architecture
-I operate a Cross-Platform Control-Plane architecture. This setup separates my "Control Plane" (where I do the work) from my "Target Infrastructure" (where the services run).
+Workflow Philosophy
+The goal of this lab is to achieve environment parity. The **Windows Host** acts as the primary IDE and development environment, while the **Linux Node** serves as an isolated test-bed. This ensures that code developed locally is verified against a production-like Linux environment before being considered "ready."
 
 The Stack
 Control Plane (Host): Windows 11 Professional
@@ -12,6 +12,7 @@ Role: Primary development workstation, CLI management, and orchestration hub.
 Target Infrastructure (Node): HP ProBook 430 G7 running Linux Mint
 
 Role: Headless production-style server for testing services, containerization, and automation.
+
 
 Connectivity & Management:
 
