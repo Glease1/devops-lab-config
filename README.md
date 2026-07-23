@@ -33,7 +33,7 @@ Roadmap
 
 [x] Phase 2: Native Deployment - Configure the Linux node for C# execution and implement global CLI installation.
 
-[ ] Phase 3: Automation - Implement Ansible playbooks for automated server provisioning.
+[X] Phase 3: Automation - Implement Ansible playbooks for automated server provisioning.
 
 [ ] Phase 4: Observability - Deploy a Prometheus/Grafana stack to monitor system performance.
 
