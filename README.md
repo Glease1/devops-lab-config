@@ -1,56 +1,119 @@
-Ryan's DevOps Infrastructure Lab
-This repository documents the evolution of a professional DevOps homelab. The objective is to build a scalable, remote-managed development environment that mirrors real-world IT service desk and engineering workflows.
+Ryan’s DevOps Infrastructure Lab
 
-Workflow Philosophy
-The goal of this lab is to achieve environment parity. The Windows host acts as the primary IDE and development environment, while the Linux node serves as an isolated test-bed. This ensures that code developed locally is verified against a production-like Linux environment before being considered deployment-ready.
+A practical DevOps homelab built around a Windows workstation and a headless Linux Mint server.
 
-Architecture: Native Execution Approach
-To ensure system stability and optimize resource usage on the target node, this lab follows a Native Execution pattern. Applications are deployed directly to the Linux environment using automated synchronization rather than containerization. This approach allows for realistic performance testing and deeper familiarity with Linux service management and native environment configuration.
+The aim is to practise real administration and DevOps workflows: remote access, Linux configuration, Infrastructure as Code, native application testing, monitoring, and CI/CD.
 
-The Stack
-Control Plane (Host): Windows 11 Professional. Role: Primary development workstation, CLI management, and orchestration hub.
+## Setup
 
-Target Infrastructure (Node): HP ProBook 430 G7 running Linux Mint. Role: Headless production-style server for testing services and automation.
+| System | Role |
+|---|---|
+| Windows 11 Pro PC | Main development machine, VS Code, Git, Ansible control node |
+| HP ProBook 430 G7, Linux Mint | Headless Linux server used for testing, automation, and services |
 
-Connectivity and Management
-Primary Access: OpenSSH (Headless terminal access) — Validated.
+The Linux machine is not used as a normal laptop. It runs headlessly and is managed remotely through SSH, VS Code Remote-SSH, and Ansible. Parsec is available only if GUI recovery is needed.
 
-IDE: VS Code (via Remote-SSH extension) — Validated.
+## Workflow
 
-Recovery: Parsec (for GUI-level diagnostic access).
+1. Develop code on Windows.
+2. Commit and push changes to GitHub.
+3. Pull code onto the Linux node.
+4. Test it natively on Linux.
+5. Use Ansible to keep the server configuration repeatable.
 
-Key Objectives
-The focus is on transitioning from manual configuration to Infrastructure as Code (IaC) to practice the following:
+The lab currently uses native execution rather than containers. This keeps the Linux server lightweight and provides hands-on experience with Linux packages, services, permissions, SSH, and application deployment.
 
-Remote Administration: Managing Linux environments without physical keyboard or monitor interaction.
+## Tools
 
-Configuration Management: Moving from ad-hoc setup to repeatable, automated provisioning.
+- Windows 11 Professional
+- Linux Mint
+- OpenSSH
+- VS Code Remote-SSH
+- Ansible
+- Git and GitHub
+- Python 3.12
+- .NET SDK 8.0
+- Parsec for recovery access
 
-Cross-Platform Workflow: Bridging Windows 11 and Linux ecosystems to create a seamless developer experience.
+## Completed Work
 
-Roadmap
-[x] Phase 1: Foundation - Stabilize SSH connectivity, SSH key authentication, and remote VS Code integration.
+### Phase 1 — Foundation
 
-[x] Phase 2: Native Deployment - Configure the Linux node for C# execution and implement global CLI installation.
+- Configured SSH access to the Linux node
+- Set up Ed25519 SSH key authentication
+- Validated headless terminal access
+- Connected through VS Code Remote-SSH
 
-[X] Phase 3: Automation - Implement Ansible playbooks for automated server provisioning.
+### Phase 2 — Native Deployment
 
-[ ] Phase 4: Observability - Deploy a Prometheus/Grafana stack to monitor system performance.
+- Installed .NET SDK 8.0 using the Microsoft APT repository
+- Prepared the Linux node to run C# utilities and projects natively
+- Established a Windows-to-Linux development and testing workflow
 
-[ ] Phase 5: CI/CD - Build a GitHub Actions pipeline that automates deployment.
+### Phase 3 — Ansible Automation
 
-Deployment Strategy
-Code is maintained in a central GitHub repository. The Linux node uses SSH-based authentication to pull the latest code directly.
+- Created an Ansible inventory for the Linux node
+- Configured Ansible SSH authentication
+- Built a role-based provisioning structure
+- Used Ansible to manage packages, services, Python tooling, and directories
+- Used sudo privilege escalation without storing passwords in the inventory
+- Validated connectivity with Ansible ping
+- Confirmed the playbook is idempotent
 
-Authentication: Managed via standard SSH. Password-based access is maintained as a security policy.
+Successful connectivity test:
 
-Workflow: Code is developed on the Windows host, pushed to GitHub, and pulled natively onto the Linux node for testing.
+```text
+device | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+```
 
-Node Configuration: .NET Runtime
-Status: Installed.
+First provisioning run:
 
-Version: .NET SDK 8.0.
+```text
+device : ok=13 changed=4 unreachable=0 failed=0
+```
 
-Method: Official Microsoft APT Repository.
+Second provisioning run:
 
-Purpose: Enables native execution of C# utility projects, allowing for performance benchmarking and testing directly on the Linux target without container overhead.
+```text
+device : ok=13 changed=0 unreachable=0 failed=0
+```
+
+The second run made no changes, confirming that the configuration can be safely rerun.
+
+## Ansible
+
+The Ansible project is located at:
+
+```text
+~/EnterpriseCloudAdmin/Ansible
+```
+
+Run the baseline playbook with:
+
+```bash
+cd ~/EnterpriseCloudAdmin/Ansible
+ansible-playbook -i inventory.ini site.yml --ask-become-pass
+```
+
+## Roadmap
+
+- [x] Phase 1: SSH, SSH keys, and VS Code Remote-SSH
+- [x] Phase 2: Native .NET deployment environment
+- [x] Phase 3: Ansible provisioning and repeatable configuration
+- [ ] Phase 4: Prometheus, Node Exporter, and Grafana monitoring
+- [ ] Phase 5: GitHub Actions CI/CD pipeline
+
+## What I’m Practising
+
+- Headless Linux administration
+- SSH troubleshooting and key authentication
+- Remote development workflows
+- Ansible inventories, playbooks, roles, and privilege escalation
+- Idempotent Infrastructure as Code
+- Linux package and service management
+- Native .NET testing on Linux
+- Git-based deployment workflows
+- Monitoring and CI/CD design
